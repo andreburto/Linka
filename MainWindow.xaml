@@ -1,0 +1,61 @@
+﻿<Window x:Class="Linka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:linka="clr-namespace:Linka"
+        Title="Linka" Height="600" Width="700" Icon="/Linka;component/Images/linka.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Height="25" Name="menuMain" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="_File" InputGestureText="Ctrl+F" Name="mFile">
+                <MenuItem Header="_Connection" InputGestureText="Ctrl+C" x:Name="mConnection" Click="mConnection_Click" />
+                <MenuItem Header="_Semester" InputGestureText="Ctrl+C" x:Name="mSemester" Click="mSemester_Click" />
+                <MenuItem Header="E_xit" InputGestureText="Ctrl+X" x:Name="mExit" Click="mExit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Help" InputGestureText="Ctrl+H" Name="mHelp">
+                <MenuItem Header="_About" InputGestureText="Ctrl+A" x:Name="mAbout" Click="mAbout_Click" />
+            </MenuItem>
+        </Menu>
+        <DockPanel Grid.Row="1" Grid.Column="0" Margin="5">
+            <TabControl Name="tabControl1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TabItem Header="Classes by Semester" Name="tabItem1">
+                    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <linka:ucClasses HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucClassesBySemester" />
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Class Rosters" Name="tabItem2" >
+                    <DockPanel>
+                        <linka:ucRosters HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucRostersByClass" />
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Teacher Classes" Name="tabItem3">
+                    <DockPanel />
+                </TabItem>
+                <TabItem Header="Student Classes" Name="tabItem4">
+                    <DockPanel />
+                </TabItem>
+                <TabItem Header="Student Info" Name="tabItem5">
+                    <DockPanel />
+                </TabItem>
+                <TabItem Header="Student Email" Name="tabItem6">
+                    <DockPanel />
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+        <DockPanel Grid.Row="2" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Top">
+            <StatusBar Height="25" HorizontalAlignment="Stretch" Margin="0" Name="statusBar1" Background="Silver" BorderBrush="Navy" BorderThickness="1">
+                <StatusBarItem Padding="1"></StatusBarItem>
+                <StatusBarItem Padding="1">
+                    <Label x:Name="txtStatusTerm" Padding="3" Content="{DynamicResource TERM}" />
+                </StatusBarItem>
+            </StatusBar>
+        </DockPanel>
+    </Grid>    
+</Window>

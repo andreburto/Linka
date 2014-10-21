@@ -1,0 +1,11 @@
+*.suo
+*.sln
+*.user
+*.log
+*.dll
+*.exe
+*.pdb
+creds.txt
+
+/bin/
+/obj/
