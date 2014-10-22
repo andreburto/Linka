@@ -36,13 +36,19 @@
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Teacher Classes" Name="tabItem3">
-                    <linka:ucTeachers HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucTeachersOfClass" />
+                    <DockPanel>
+                        <linka:ucTeachers HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucTeachersOfClass" />
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="Student Classes" Name="tabItem4">
-                    <DockPanel />
+                    <DockPanel>
+                        <linka:ucStudentClasses x:Name="StudentClasses"></linka:ucStudentClasses>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="Student Info" Name="tabItem5">
-                    <DockPanel />
+                    <DockPanel>
+                        <linka:ucStudentInfo x:Name="StudentInfo"></linka:ucStudentInfo>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="Student Email" Name="tabItem6">
                     <DockPanel />

@@ -11,7 +11,8 @@
     <RootNamespace>Linka</RootNamespace>
     <AssemblyName>Linka</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -42,6 +43,9 @@
     <StartupObject>Linka.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleStudentsLib">
+      <HintPath>..\..\..\vb\MakeMail\MakeMail\bin\Release\GoogleStudentsLib.dll</HintPath>
+    </Reference>
     <Reference Include="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <Private>True</Private>
     </Reference>
@@ -82,6 +86,15 @@
     <Compile Include="UserControls\ucRosters.xaml.cs">
       <DependentUpon>ucRosters.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucStudentClasses.xaml.cs">
+      <DependentUpon>ucStudentClasses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucStudentEmail.xaml.cs">
+      <DependentUpon>ucStudentEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucStudentInfo.xaml.cs">
+      <DependentUpon>ucStudentInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucTeachers.xaml.cs">
       <DependentUpon>ucTeachers.xaml</DependentUpon>
     </Compile>
@@ -118,6 +131,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ucStudentClasses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ucStudentEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ucStudentInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ucTeachers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +166,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

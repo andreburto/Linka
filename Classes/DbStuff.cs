@@ -47,7 +47,13 @@ namespace Linka
             return FetchDataSet(sql);
         }
 
-        public static DataSet LoadClassesOfStudent(string pidm, string term)
+        public static DataSet LoadStudentInfo(string pidm)
+        {
+            string sql = "";
+            return FetchDataSet(sql);
+        }
+
+        public static DataSet LoadStudentClasses(string pidm, string term)
         {
             string sql = "";
             return FetchDataSet(sql);

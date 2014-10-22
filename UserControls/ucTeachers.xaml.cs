@@ -28,11 +28,20 @@ namespace Linka
 
         private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateTeacherInfo((DataRowView)dataGrid1.SelectedItem);
+            if (dataGrid1.SelectedItem != null)
+            {
+                UpdateTeacherInfo((DataRowView)dataGrid1.SelectedItem);
+            }
+            else
+            {
+                dataGrid2.ItemsSource = null;
+            }
         }
 
         public void UpdateForm(DataRowView cr)
         {
+            dataGrid2.IsEnabled = false;
+
             // Update the datagrid
             dataGrid1.ItemsSource = null;
             DataSet ds = DbStuff.LoadTeachersOfClass(cr[0].ToString(), App.Current.Resources["TERM"].ToString());
@@ -41,6 +50,8 @@ namespace Linka
             // Update the title
             string title = cr[1].ToString() + cr[2].ToString() + " " + cr[3].ToString() + " - " + cr[0].ToString();
             txtLabel.Text = title;
+
+            dataGrid2.IsEnabled = true;
         }
 
         public void UpdateTeacherInfo(DataRowView cr)
