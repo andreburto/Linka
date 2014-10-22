@@ -17,26 +17,37 @@ using Linka;
 namespace Linka
 {
     /// <summary>
-    /// Interaction logic for ucRosters.xaml
+    /// Interaction logic for ucTeachers.xaml
     /// </summary>
-    public partial class ucRosters : UserControl
+    public partial class ucTeachers : UserControl
     {
-        public ucRosters()
+        public ucTeachers()
         {
             InitializeComponent();
+        }
+
+        private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateTeacherInfo((DataRowView)dataGrid1.SelectedItem);
         }
 
         public void UpdateForm(DataRowView cr)
         {
             // Update the datagrid
             dataGrid1.ItemsSource = null;
-            DataSet ds = DbStuff.LoadRostersByClass(cr[0].ToString(), App.Current.Resources["TERM"].ToString());
+            DataSet ds = DbStuff.LoadTeachersOfClass(cr[0].ToString(), App.Current.Resources["TERM"].ToString());
             if (ds.Tables.Count > 0) { dataGrid1.ItemsSource = ds.Tables[0].DefaultView; }
 
             // Update the title
             string title = cr[1].ToString() + cr[2].ToString() + " " + cr[3].ToString() + " - " + cr[0].ToString();
-            if (dataGrid1.HasItems) { title += " | Roster: " + ds.Tables[0].Rows.Count.ToString(); }
             txtLabel.Text = title;
+        }
+
+        public void UpdateTeacherInfo(DataRowView cr)
+        {
+            dataGrid2.ItemsSource = null;
+            DataSet ds = DbStuff.LoadTeacherInfo(cr[0].ToString());
+            if (ds.Tables.Count > 0) { dataGrid2.ItemsSource = ds.Tables[0].DefaultView; }
         }
     }
 }

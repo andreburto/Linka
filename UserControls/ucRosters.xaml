@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        
-        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="0" Name="dataGrid1" VerticalAlignment="Stretch" SelectionMode="Single" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Name="txtLabel" FontSize="12" FontWeight="Bold" Background="Silver" Padding="3" Grid.Row="0"></TextBlock>
+        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="0" Name="dataGrid1" VerticalAlignment="Stretch" SelectionMode="Single" Grid.Row="1"/>
     </Grid>
 </UserControl>

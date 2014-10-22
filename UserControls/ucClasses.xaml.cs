@@ -21,10 +21,14 @@ namespace Linka
     /// </summary>
     public partial class ucClasses : UserControl
     {
+        // These top two should be Nullable, but in a rush, so compromise!
         private ucRosters _rosterlist;
-        private bool yesno = false;
+        private ucTeachers _classteachers;
+        private bool yesnoR = false;
+        private bool yesnoT = false;
 
-        public ucRosters Roster { set { yesno = true;  _rosterlist = value; } }
+        public ucRosters Roster { set { yesnoR = true;  _rosterlist = value; } }
+        public ucTeachers Teachers { set { yesnoT = true; _classteachers = value; } }
 
         public ucClasses()
         {
@@ -45,12 +49,21 @@ namespace Linka
         private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Avoid erors
-            if (yesno == false) { return; }
             if (dataGrid1.Items.Count == 0) { return; }
-            // Load the datagrid
-            DataRowView CurRow = (DataRowView)dataGrid1.SelectedItem;
-            _rosterlist.UpdateTable(CurRow[0].ToString());   
+
+            // If a roster form is set Load the datagrid
+            if (yesnoR == true)
+            {
+                _rosterlist.UpdateForm((DataRowView)dataGrid1.SelectedItem);
+            }
+            
+            // If a teacher form is set Load the datagrid
+            if (yesnoT == true)
+            {
+                _classteachers.UpdateForm((DataRowView)dataGrid1.SelectedItem);
+            }
         }
+
 
 
     }

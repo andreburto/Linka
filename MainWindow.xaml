@@ -36,7 +36,7 @@
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Teacher Classes" Name="tabItem3">
-                    <DockPanel />
+                    <linka:ucTeachers HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucTeachersOfClass" />
                 </TabItem>
                 <TabItem Header="Student Classes" Name="tabItem4">
                     <DockPanel />

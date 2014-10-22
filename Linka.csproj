@@ -75,11 +75,15 @@
     <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="UserControls\ucClasses.xaml.cs">
       <DependentUpon>ucClasses.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucRosters.xaml.cs">
       <DependentUpon>ucRosters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucTeachers.xaml.cs">
+      <DependentUpon>ucTeachers.xaml</DependentUpon>
     </Compile>
     <Page Include="Forms\frmAbout.xaml">
       <SubType>Designer</SubType>
@@ -114,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ucTeachers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -139,7 +147,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="README.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\linka.png" />
   </ItemGroup>
