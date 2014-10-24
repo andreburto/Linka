@@ -43,13 +43,25 @@ namespace Linka
 
         public static DataSet LoadTeacherInfo(string pidm)
         {
-            string sql = "select * from SATURN.SPRIDEN SPRIDEN where SPRIDEN.SPRIDEN_PIDM ="+pidm+" order by SPRIDEN_ACTIVITY_DATE desc";
+            string sql = "select SPRIDEN_ID,SPRIDEN_LAST_NAME,SPRIDEN_FIRST_NAME,NVL(SPRIDEN_MI,''),SPRIDEN_ACTIVITY_DATE from SATURN.SPRIDEN SPRIDEN where SPRIDEN.SPRIDEN_PIDM ="+pidm+" order by SPRIDEN_ACTIVITY_DATE desc";
             return FetchDataSet(sql);
         }
 
-        public static DataSet LoadStudentInfo(string pidm)
+        public static DataSet LoadStudentInfoBySsn(string ssn)
         {
-            string sql = "";
+            string sql = "select spbpers.*, SPRIDEN.* from spbpers join spriden on spbpers.spbpers_pidm = spriden.spriden_pidm where spriden_change_ind is null and spbpers_ssn='"+ssn+"'";
+            return FetchDataSet(sql);
+        }
+
+        public static DataSet LoadStudentInfoById(string id)
+        {
+            string sql = "select spbpers.*, SPRIDEN.* from spbpers join spriden on spbpers.spbpers_pidm = spriden.spriden_pidm where spriden_change_ind is null and spriden_id='" + id + "'";
+            return FetchDataSet(sql);
+        }
+
+        public static DataSet LoadStudentInfoByPidm(string pidm)
+        {
+            string sql = "select spbpers.*, SPRIDEN.* from spbpers join spriden on spbpers.spbpers_pidm = spriden.spriden_pidm where spriden_change_ind is null and spriden_pidm='" + pidm + "'";
             return FetchDataSet(sql);
         }
 
@@ -61,7 +73,7 @@ namespace Linka
 
         public static DataSet LoadRostersByClass(string classid, string term)
         {
-            string sql = "select SPRIDEN.SPRIDEN_PIDM,SPRIDEN.SPRIDEN_ID,SPRIDEN.SPRIDEN_FIRST_NAME,SPRIDEN.SPRIDEN_LAST_NAME,STVRSTS.STVRSTS_CODE,STVRSTS.STVRSTS_DESC,NVL(SFRSTCR.SFRSTCR_GRDE_CODE_MID,'NULL') SFRSTCR_GRDE_CODE_MID from SATURN.SFRSTCR SFRSTCR,SATURN.SPRIDEN SPRIDEN,SATURN.STVRSTS STVRSTS where (SFRSTCR.SFRSTCR_PIDM = SPRIDEN.SPRIDEN_PIDM (+) and SFRSTCR.SFRSTCR_RSTS_CODE = STVRSTS.STVRSTS_CODE (+)) and (SFRSTCR.SFRSTCR_TERM_CODE="+term+" and SFRSTCR.SFRSTCR_CRN="+classid+" and SPRIDEN.SPRIDEN_CHANGE_IND is null ) order by SPRIDEN.SPRIDEN_LAST_NAME,SPRIDEN.SPRIDEN_FIRST_NAME,SPRIDEN.SPRIDEN_MI,SPRIDEN.SPRIDEN_ID";
+            string sql = "select SPRIDEN.SPRIDEN_ID,SPRIDEN.SPRIDEN_FIRST_NAME,SPRIDEN.SPRIDEN_LAST_NAME,STVRSTS.STVRSTS_CODE,STVRSTS.STVRSTS_DESC,NVL(SFRSTCR.SFRSTCR_GRDE_CODE_MID,'NULL') SFRSTCR_GRDE_CODE_MID from SATURN.SFRSTCR SFRSTCR,SATURN.SPRIDEN SPRIDEN,SATURN.STVRSTS STVRSTS where (SFRSTCR.SFRSTCR_PIDM = SPRIDEN.SPRIDEN_PIDM (+) and SFRSTCR.SFRSTCR_RSTS_CODE = STVRSTS.STVRSTS_CODE (+)) and (SFRSTCR.SFRSTCR_TERM_CODE="+term+" and SFRSTCR.SFRSTCR_CRN="+classid+" and SPRIDEN.SPRIDEN_CHANGE_IND is null ) order by SPRIDEN.SPRIDEN_LAST_NAME,SPRIDEN.SPRIDEN_FIRST_NAME,SPRIDEN.SPRIDEN_MI,SPRIDEN.SPRIDEN_ID";
             return FetchDataSet(sql);
         }
 

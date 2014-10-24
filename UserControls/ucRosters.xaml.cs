@@ -21,6 +21,11 @@ namespace Linka
     /// </summary>
     public partial class ucRosters : UserControl
     {
+        private ucFindStudents _findstudents;
+        private bool _fsyesno = false;
+
+        public ucFindStudents FindStudents { set { _fsyesno = true; _findstudents = value; } }
+
         public ucRosters()
         {
             InitializeComponent();
@@ -37,6 +42,11 @@ namespace Linka
             string title = cr[1].ToString() + cr[2].ToString() + " " + cr[3].ToString() + " - " + cr[0].ToString();
             if (dataGrid1.HasItems) { title += " | Roster: " + ds.Tables[0].Rows.Count.ToString(); }
             txtLabel.Text = title;
+        }
+
+        private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_fsyesno == false) { return; }
         }
     }
 }

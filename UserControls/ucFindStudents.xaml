@@ -6,13 +6,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:linka="clr-namespace:Linka"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="480">
-    <Grid>
+             d:DesignHeight="480" d:DesignWidth="480">
+    <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="150"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Margin="0">
+        <Grid Margin="0" Background="#FFF0F0F0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -25,18 +25,18 @@
             </Grid.RowDefinitions>
             <!-- SSN ROW -->
             <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="right" FontSize="14" FontWeight="Bold">STUDENT SSN:</TextBlock>
-            <TextBox x:Name="txtSsn" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14"></TextBox>
-            <Button x:Name="btnSsn" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False"></Button>
+            <TextBox x:Name="txtSsn" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14" TextChanged="txtSsn_TextChanged"></TextBox>
+            <Button x:Name="btnSsn" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False" Click="btnSsn_Click"></Button>
             <!-- ID ROW -->
             <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="right" FontSize="14" FontWeight="Bold">STUDENT ID:</TextBlock>
-            <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14"></TextBox>
-            <Button x:Name="btnId" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False"></Button>
+            <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14" TextChanged="txtId_TextChanged"></TextBox>
+            <Button x:Name="btnId" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False" Click="btnId_Click"></Button>
             <!-- PIDM ROW -->
             <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="right" FontSize="14" FontWeight="Bold">STUDENT PIDM:</TextBlock>
-            <TextBox x:Name="txtPidm" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14"></TextBox>
-            <Button x:Name="btnPidm" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False"></Button>
+            <TextBox x:Name="txtPidm" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14" TextChanged="txtPidm_TextChanged"></TextBox>
+            <Button x:Name="btnPidm" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False" Click="btnPidm_Click"></Button>
         </Grid>
-        <DockPanel Grid.Column="0" Grid.Row="1" Margin="0">
+        <DockPanel Grid.Column="0" Grid.Row="1" Margin="0" Background="#FFF0F0F0">
             <TabControl Name="tabControl1">
                 <TabItem Header="Student Info" Name="tabItem1">
                     <Grid />

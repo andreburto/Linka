@@ -12,6 +12,6 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Name="txtLabel" FontSize="12" FontWeight="Bold" Background="Silver" Padding="3" Grid.Row="0"></TextBlock>
-        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="0" Name="dataGrid1" VerticalAlignment="Stretch" SelectionMode="Single" Grid.Row="1"/>
+        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="0" Name="dataGrid1" VerticalAlignment="Stretch" SelectionMode="Single" Grid.Row="1" SelectionChanged="dataGrid1_SelectionChanged" />
     </Grid>
 </UserControl>

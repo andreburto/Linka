@@ -42,7 +42,7 @@
                 </TabItem>
                 <TabItem Header="Find Students" Name="tabItem4">
                     <DockPanel>
-                        <linka:ucFindStudents x:Name="FindStudents"></linka:ucFindStudents>
+                        <linka:ucFindStudents HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucFindAStudent" />
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Student Email" Name="tabItem5">
