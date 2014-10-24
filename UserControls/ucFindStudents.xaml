@@ -1,0 +1,50 @@
+﻿<UserControl x:Name="FindStudents"
+             x:Class="Linka.ucFindStudents"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:linka="clr-namespace:Linka"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="480">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!-- SSN ROW -->
+            <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="right" FontSize="14" FontWeight="Bold">STUDENT SSN:</TextBlock>
+            <TextBox x:Name="txtSsn" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14"></TextBox>
+            <Button x:Name="btnSsn" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False"></Button>
+            <!-- ID ROW -->
+            <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="right" FontSize="14" FontWeight="Bold">STUDENT ID:</TextBlock>
+            <TextBox x:Name="txtId" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14"></TextBox>
+            <Button x:Name="btnId" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False"></Button>
+            <!-- PIDM ROW -->
+            <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="right" FontSize="14" FontWeight="Bold">STUDENT PIDM:</TextBlock>
+            <TextBox x:Name="txtPidm" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Margin="5" FontSize="14"></TextBox>
+            <Button x:Name="btnPidm" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalAlignment="Stretch" Content="GET STUDENT" FontSize="14" FontWeight="Bold" IsEnabled="False"></Button>
+        </Grid>
+        <DockPanel Grid.Column="0" Grid.Row="1" Margin="0">
+            <TabControl Name="tabControl1">
+                <TabItem Header="Student Info" Name="tabItem1">
+                    <Grid />
+                </TabItem>
+                <TabItem Header="Student Classes" Name="tabItem2">
+                    <Grid />
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</UserControl>

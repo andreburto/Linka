@@ -40,17 +40,12 @@
                         <linka:ucTeachers HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucTeachersOfClass" />
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="Student Classes" Name="tabItem4">
+                <TabItem Header="Find Students" Name="tabItem4">
                     <DockPanel>
-                        <linka:ucStudentClasses x:Name="StudentClasses"></linka:ucStudentClasses>
+                        <linka:ucFindStudents x:Name="FindStudents"></linka:ucFindStudents>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="Student Info" Name="tabItem5">
-                    <DockPanel>
-                        <linka:ucStudentInfo x:Name="StudentInfo"></linka:ucStudentInfo>
-                    </DockPanel>
-                </TabItem>
-                <TabItem Header="Student Email" Name="tabItem6">
+                <TabItem Header="Student Email" Name="tabItem5">
                     <DockPanel />
                 </TabItem>
             </TabControl>

@@ -83,6 +83,9 @@
     <Compile Include="UserControls\ucClasses.xaml.cs">
       <DependentUpon>ucClasses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucFindStudents.xaml.cs">
+      <DependentUpon>ucFindStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucRosters.xaml.cs">
       <DependentUpon>ucRosters.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\ucClasses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ucFindStudents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
