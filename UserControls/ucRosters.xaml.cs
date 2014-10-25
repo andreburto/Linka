@@ -47,6 +47,7 @@ namespace Linka
         private void dataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_fsyesno == false) { return; }
+            if (dataGrid1.HasItems == false) { return; }
 
             _findstudents.UpdateForm((DataRowView)dataGrid1.SelectedItem);
         }

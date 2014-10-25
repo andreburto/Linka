@@ -23,11 +23,11 @@ namespace Linka
     {
         private ucStudentInfo _studentinfo;
         private ucStudentClasses _studentclasses;
-        private bool _siyesno = false;
-        private bool _scyesno = false;
+        private bool _yesnoSI = false;
+        private bool _yesnoSC = false;
 
-        public ucStudentInfo StudentInfo { set { _siyesno = true; _studentinfo = value; } }
-        public ucStudentClasses StudentClasses { set { _scyesno = true; _studentclasses = value; } }
+        public ucStudentInfo StudentInfo { set { _yesnoSI = true; _studentinfo = value; } }
+        public ucStudentClasses StudentClasses { set { _yesnoSC = true; _studentclasses = value; } }
 
         public ucFindStudents()
         {
@@ -88,8 +88,17 @@ namespace Linka
         /* Private function that updates the embedded user controls */
         private void UpdateControls(DataRow dr)
         {
-            MessageBox.Show(dr["SPRIDEN_PIDM"].ToString());
-            _studentclasses.UpdateForm(dr["SPRIDEN_PIDM"].ToString());
+            // If the ucStudentClasses control is linked in...
+            if (_yesnoSC == true)
+            {
+                _studentclasses.UpdateForm(dr["SPRIDEN_PIDM"].ToString());
+            }
+
+            // If the ucStudentInfo control is linked in...
+            if (_yesnoSI == true)
+            {
+
+            }
         }
 
         /* Publically accessible functions that update the embedded user controls via the above private function */
@@ -98,6 +107,8 @@ namespace Linka
             try
             {
                 DataSet ds = DbStuff.LoadStudentInfoById(cr[0].ToString());
+                if (ds.Tables.Count == 0) { throw new Exception("No tables found."); }
+                if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No records found."); }
                 UpdateControls(ds.Tables[0].Rows[0]);
             }
             catch(Exception ex)
