@@ -71,12 +71,33 @@ namespace Linka
 
         }
 
+        private void ResetForm()
+        {
+            // Reset this form
+            txtId.Text = "";
+            txtSsn.Text = "";
+            txtPidm.Text = "";
+            // Reset user controls
+        }
+
         /* Private function that updates the embedded user controls */
+        private void UpdateControls(DataRow dr)
+        {
+            MessageBox.Show(dr["SPRIDEN_PIDM"].ToString());
+        }
 
         /* Publically accessible functions that update the embedded user controls via the above private function */
-        public void UpdateById(string id)
+        public void UpdateForm(DataRowView cr)
         {
-
+            try
+            {
+                DataSet ds = DbStuff.LoadStudentInfoById(cr[0].ToString());
+                UpdateControls(ds.Tables[0].Rows[0]);
+            }
+            catch(Exception ex)
+            {
+                DbStuff.ErrMsg(ex);
+            }
         }
     }
 }

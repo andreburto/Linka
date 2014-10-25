@@ -43,7 +43,13 @@ namespace Linka
 
         public static DataSet LoadTeacherInfo(string pidm)
         {
-            string sql = "select SPRIDEN_ID,SPRIDEN_LAST_NAME,SPRIDEN_FIRST_NAME,NVL(SPRIDEN_MI,''),SPRIDEN_ACTIVITY_DATE from SATURN.SPRIDEN SPRIDEN where SPRIDEN.SPRIDEN_PIDM ="+pidm+" order by SPRIDEN_ACTIVITY_DATE desc";
+            string sql = "select SPRIDEN_ID,SPRIDEN_LAST_NAME,SPRIDEN_FIRST_NAME,NVL(SPRIDEN_MI,'') SPRIDEN_MI,SPRIDEN_ACTIVITY_DATE from SATURN.SPRIDEN SPRIDEN where SPRIDEN.SPRIDEN_PIDM =" + pidm + " order by SPRIDEN_ACTIVITY_DATE desc";
+            return FetchDataSet(sql);
+        }
+
+        public static DataSet LoadStudentAddresses(string pidm)
+        {
+            string sql = "select spraddr_atyp_code,spraddr_street_line1,spraddr_street_line2,spraddr_street_line3,spraddr_city,spraddr_stat_code,spraddr_zip,spraddr_cnty_code,spraddr_natn_code from spraddr where spraddr_pidm=" + pidm + " order by spraddr_seqno asc";
             return FetchDataSet(sql);
         }
 

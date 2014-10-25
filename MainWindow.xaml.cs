@@ -87,6 +87,7 @@ namespace Linka
             // Set UserControl dependency chain
             ucClassesBySemester.Roster = ucRostersByClass;
             ucClassesBySemester.Teachers = ucTeachersOfClass;
+            ucRostersByClass.FindStudents = ucFindAStudent;
         }
 
         private void mConnection_Click(object sender, RoutedEventArgs e)
