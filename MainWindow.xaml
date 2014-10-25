@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:linka="clr-namespace:Linka"
-        Title="Linka" Height="600" Width="700" Icon="/Linka;component/Images/linka.ico">
+        Title="Linka" Height="720" Width="800" Icon="/Linka;component/Images/linka.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>

@@ -49,7 +49,7 @@ namespace Linka
 
         public static DataSet LoadStudentAddresses(string pidm)
         {
-            string sql = "select spraddr_atyp_code,spraddr_street_line1,spraddr_street_line2,spraddr_street_line3,spraddr_city,spraddr_stat_code,spraddr_zip,spraddr_cnty_code,spraddr_natn_code from spraddr where spraddr_pidm=" + pidm + " order by spraddr_seqno asc";
+            string sql = "select spraddr_atyp_code,TRIM(spraddr_street_line1||' '||spraddr_street_line2||' '||spraddr_street_line3) spraddr_street_line,spraddr_city,spraddr_stat_code,spraddr_zip from spraddr where spraddr_pidm=" + pidm + " order by spraddr_seqno asc";
             return FetchDataSet(sql);
         }
 
