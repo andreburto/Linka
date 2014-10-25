@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\..\Dropbox\wccs_work\linka\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -76,7 +76,7 @@
     <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="UserControls\ucClasses.xaml.cs">
       <DependentUpon>ucClasses.xaml</DependentUpon>
     </Compile>
