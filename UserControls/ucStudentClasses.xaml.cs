@@ -25,5 +25,17 @@ namespace Linka
         {
             InitializeComponent();
         }
+
+        public void UpdateForm(string pidm)
+        {
+            dataGrid1.ItemsSource = null;
+            DataSet ds = DbStuff.LoadStudentClasses(pidm, App.Current.Resources["TERM"].ToString());
+            if (ds.Tables.Count > 0) { dataGrid1.ItemsSource = ds.Tables[0].DefaultView; }
+        }
+
+        public void ClearForm()
+        {
+            dataGrid1.ItemsSource = null;
+        }
     }
 }

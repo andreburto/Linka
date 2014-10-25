@@ -32,6 +32,10 @@ namespace Linka
         public ucFindStudents()
         {
             InitializeComponent();
+
+            // Set embeded user controls
+            StudentInfo = ucInformationOfStudent;
+            StudentClasses = ucClassesOfStudent;
         }
 
         private void txtSsn_TextChanged(object sender, TextChangedEventArgs e)
@@ -78,12 +82,14 @@ namespace Linka
             txtSsn.Text = "";
             txtPidm.Text = "";
             // Reset user controls
+            _studentclasses.ClearForm();
         }
 
         /* Private function that updates the embedded user controls */
         private void UpdateControls(DataRow dr)
         {
             MessageBox.Show(dr["SPRIDEN_PIDM"].ToString());
+            _studentclasses.UpdateForm(dr["SPRIDEN_PIDM"].ToString());
         }
 
         /* Publically accessible functions that update the embedded user controls via the above private function */

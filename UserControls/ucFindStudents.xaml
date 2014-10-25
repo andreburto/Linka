@@ -39,10 +39,14 @@
         <DockPanel Grid.Column="0" Grid.Row="1" Margin="0" Background="#FFF0F0F0">
             <TabControl Name="tabControl1">
                 <TabItem Header="Student Info" Name="tabItem1">
-                    <Grid />
+                    <DockPanel>
+                        <linka:ucStudentInfo HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucInformationOfStudent"></linka:ucStudentInfo>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="Student Classes" Name="tabItem2">
-                    <Grid />
+                    <DockPanel>
+                        <linka:ucStudentClasses HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucClassesOfStudent" ></linka:ucStudentClasses>
+                    </DockPanel>
                 </TabItem>
             </TabControl>
         </DockPanel>

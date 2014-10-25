@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="dockPanel1">
+        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="dataGrid1" />
+    </DockPanel>
 </UserControl>
