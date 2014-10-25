@@ -40,39 +40,48 @@ namespace Linka
 
         private void txtSsn_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtSsn.Text.Length == 0)
-            {
-                btnSsn.IsEnabled = false;
-            }
-            else
-            {
-                btnSsn.IsEnabled = true;
-            }
+            if (txtSsn.Text.Length == 0) { btnSsn.IsEnabled = false; }
+            else { btnSsn.IsEnabled = true; }
         }
 
         private void txtId_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (txtId.Text.Length == 0) { btnId.IsEnabled = false; }
+            else { btnId.IsEnabled = true; }
         }
 
         private void txtPidm_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (txtPidm.Text.Length == 0) { btnPidm.IsEnabled = false; }
+            else { btnPidm.IsEnabled = true; }
         }
 
         private void btnSsn_Click(object sender, RoutedEventArgs e)
         {
-
+            string ssn = txtSsn.Text.Replace("-", "").Replace(" ", "");
+            if (ssn.Length != 9)
+            {
+                DbStuff.ErrMsg("Not a properly formatted Social Security Number.");
+                txtSsn.Text = "";
+                return;
+            }
+            CheckResults(DbStuff.LoadStudentInfoBySsn(ssn));
         }
 
         private void btnId_Click(object sender, RoutedEventArgs e)
         {
-
+            string id = txtId.Text.Replace(" ", "").ToUpper();
+            if (id.Substring(0, 1) != "W")
+            {
+                DbStuff.ErrMsg("You are not sending a Banner ID. Results by vary.");
+            }
+            CheckResults(DbStuff.LoadStudentInfoById(id));
         }
 
         private void btnPidm_Click(object sender, RoutedEventArgs e)
         {
-
+            string pidm = txtSsn.Text.Replace(" ", "");
+            CheckResults(DbStuff.LoadStudentInfoByPidm(pidm));
         }
 
         private void ResetForm()
@@ -82,7 +91,8 @@ namespace Linka
             txtSsn.Text = "";
             txtPidm.Text = "";
             // Reset user controls
-            _studentclasses.ClearForm();
+            if (_yesnoSC == true) { _studentclasses.ClearForm(); }
+            if (_yesnoSI == true) { _studentinfo.Reset(); }
         }
 
         /* Private function that updates the embedded user controls */
@@ -97,8 +107,16 @@ namespace Linka
             // If the ucStudentInfo control is linked in...
             if (_yesnoSI == true)
             {
-
+                _studentinfo.UpdateForm(dr);
             }
+        }
+
+        // Trying to filter DataSets through one function
+        private void CheckResults(DataSet ds)
+        {
+            if (ds.Tables.Count == 0) { throw new Exception("No tables found."); }
+            if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No records found."); }
+            UpdateControls(ds.Tables[0].Rows[0]);
         }
 
         /* Publically accessible functions that update the embedded user controls via the above private function */
@@ -106,10 +124,7 @@ namespace Linka
         {
             try
             {
-                DataSet ds = DbStuff.LoadStudentInfoById(cr[0].ToString());
-                if (ds.Tables.Count == 0) { throw new Exception("No tables found."); }
-                if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No records found."); }
-                UpdateControls(ds.Tables[0].Rows[0]);
+                CheckResults(DbStuff.LoadStudentInfoById(cr[0].ToString()));
             }
             catch(Exception ex)
             {
