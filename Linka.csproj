@@ -43,9 +43,6 @@
     <StartupObject>Linka.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GoogleStudentsLib">
-      <HintPath>..\..\..\vb\MakeMail\MakeMail\bin\Release\GoogleStudentsLib.dll</HintPath>
-    </Reference>
     <Reference Include="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <Private>True</Private>
     </Reference>
@@ -79,7 +76,7 @@
     <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="UserControls\ucClasses.xaml.cs">
       <DependentUpon>ucClasses.xaml</DependentUpon>
     </Compile>
