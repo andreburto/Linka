@@ -26,5 +26,10 @@ namespace Linka
         {
             InitializeComponent();
         }
+
+        public void UpdateForm(string id)
+        {
+
+        }
     }
 }

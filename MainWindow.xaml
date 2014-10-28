@@ -46,7 +46,9 @@
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Student Email" Name="tabItem5">
-                    <DockPanel />
+                    <DockPanel>
+                        <linka:ucStudentEmail HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="ucFixStudentEmail" />
+                    </DockPanel>
                 </TabItem>
             </TabControl>
         </DockPanel>
