@@ -16,7 +16,8 @@
         <Menu Height="25" Name="menuMain" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
             <MenuItem Header="_File" InputGestureText="Ctrl+F" Name="mFile">
                 <MenuItem Header="_Connection" InputGestureText="Ctrl+C" x:Name="mConnection" Click="mConnection_Click" />
-                <MenuItem Header="_Semester" InputGestureText="Ctrl+C" x:Name="mSemester" Click="mSemester_Click" />
+                <MenuItem Header="_Google" InputGestureText="Ctrl+S" x:Name="mGoogle" Click="mGoogle_Click" />
+                <MenuItem Header="_Semester" InputGestureText="Ctrl+S" x:Name="mSemester" Click="mSemester_Click" />
                 <MenuItem Header="E_xit" InputGestureText="Ctrl+X" x:Name="mExit" Click="mExit_Click" />
             </MenuItem>
             <MenuItem Header="_Help" InputGestureText="Ctrl+H" Name="mHelp">

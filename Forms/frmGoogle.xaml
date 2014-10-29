@@ -1,0 +1,30 @@
+﻿<Window x:Class="Linka.frmGoogle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="frmGoogle" Height="200" Width="480" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock FontSize="22" FontWeight="Bold">Google Apps Login</TextBlock>
+        </Label>
+        <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <TextBlock FontSize="16" FontWeight="Bold">User ID:</TextBlock>
+        </Label>
+        <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <TextBlock FontSize="16" FontWeight="Bold">Password:</TextBlock>
+        </Label>
+        <TextBox x:Name="txtUser" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="16" Grid.Column="1" Grid.Row="1" Margin="5" />
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="16" Grid.Column="1" Grid.Row="2" Margin="5" />
+        <Button x:Name="btnSave" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5" Width="150" Click="btnSave_Click">SAVE</Button>
+        <Button x:Name="btnCancel" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5" Width="150" Click="btnCancel_Click">CANCEL</Button>
+    </Grid>
+</Window>

@@ -130,5 +130,11 @@ namespace Linka
                 App.Current.Resources["TERM"] = term;
             }
         }
+
+        private void mGoogle_Click(object sender, RoutedEventArgs e)
+        {
+            frmGoogle g = new frmGoogle();
+            g.ShowDialog();
+        }
     }
 }

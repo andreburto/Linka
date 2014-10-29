@@ -9,13 +9,13 @@ namespace Linka
 {
     class Creds
     {
-        private string _file = "creds.txt";
-        private string _fullpath;
-        private string _line;
-        private string _id;
-        private string _pw;
-        private string _svr;
-        private string _db;
+        protected string _file = "creds.txt";
+        protected string _fullpath;
+        protected string _line;
+        protected string _id;
+        protected string _pw;
+        protected string _svr;
+        protected string _db;
 
         public string Id
         {
@@ -102,13 +102,13 @@ namespace Linka
          * The Encoder and Decoder functions aren't for security so much as obscurity.
          * They exist to make a bot's quick scan for passwords more difficult.
          *****/
-        private void Encoder()
+        protected void Encoder()
         {
             string line = _id + "|" + _pw + "|" + _svr + "|" + _db;
             byte[] bytebuffer = System.Text.UTF8Encoding.UTF8.GetBytes(line);
             _line = System.Convert.ToBase64String(bytebuffer, Base64FormattingOptions.None);
         }
-        private void Decoder()
+        protected void Decoder()
         {
             byte[] bytebuffer = System.Convert.FromBase64String(_line);
             string line = System.Text.UTF8Encoding.UTF8.GetString(bytebuffer);
@@ -116,7 +116,7 @@ namespace Linka
             _id = parts[0]; _pw = parts[1]; _svr = parts[2]; _db = parts[3];
         }
 
-        private bool CheckVals()
+        protected bool CheckVals()
         {
             // Must have values
             if (_id.Length == 0) { return false; }

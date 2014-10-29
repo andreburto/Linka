@@ -69,9 +69,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\DbStuff.cs" />
+    <Compile Include="Classes\goocreds.cs" />
     <Compile Include="Classes\Terms.cs" />
     <Compile Include="Forms\frmAbout.xaml.cs">
       <DependentUpon>frmAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGoogle.xaml.cs">
+      <DependentUpon>frmGoogle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmTerm.xaml.cs">
       <DependentUpon>frmTerm.xaml</DependentUpon>
@@ -105,6 +109,10 @@
       <DependentUpon>ucTeachers.xaml</DependentUpon>
     </Compile>
     <Page Include="Forms\frmAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\frmGoogle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
