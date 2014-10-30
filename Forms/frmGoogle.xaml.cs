@@ -43,7 +43,13 @@ namespace Linka
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (txtUser.Text.Length > 0) { _id = txtUser.Text; } else { _id = "gid"; }
-            if (txtPassword.Text.Length > 0) { _id = txtPassword.Text; } else { _pw = "gpw"; }
+            if (txtPassword.Text.Length > 0) { _pw = txtPassword.Text; } else { _pw = "gpw"; }
+
+            App.Current.Resources["GID"] = _id;
+            App.Current.Resources["GPW"] = _pw;
+
+            _gc.Save(_id, _pw);
+
             this.DialogResult = true;
         }
 
@@ -51,17 +57,5 @@ namespace Linka
         {
             this.DialogResult = false;
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (this.DialogResult == true)
-            {
-                _gc.Save(_id, _pw);
-                App.Current.Resources["GID"] = _id;
-                App.Current.Resources["GPW"] = _pw;
-            }
-        }
-
-
     }
 }
