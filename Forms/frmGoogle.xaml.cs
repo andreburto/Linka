@@ -43,7 +43,7 @@ namespace Linka
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (txtUser.Text.Length > 0) { _id = txtUser.Text; } else { _id = "gid"; }
-            if (txtPassword.Text.Length > 0) { _id = txtPassword.Text; } else { _id = "gpw"; }
+            if (txtPassword.Text.Length > 0) { _id = txtPassword.Text; } else { _pw = "gpw"; }
             this.DialogResult = true;
         }
 
