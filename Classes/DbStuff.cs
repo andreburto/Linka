@@ -35,6 +35,40 @@ namespace Linka
             }
         }
 
+        public static DataSet LoadStudentEmail(string id)
+        {
+            string sql = "select * from STUMAIL where STUMAIL_ID='"+id+"'";
+            return FetchDataSet(sql);
+        }
+
+        public static Int16 CountSimilarAddresses(string address)
+        {
+            string sql = "select count(*) c where STUMAIL_ADDRESS like '"+address+"%'";
+            DataSet ds = FetchDataSet(sql);
+            if (ds.Tables.Count == 0) { return 0; }
+            if (ds.Tables[0].Rows.Count == 0) { return 0; }
+            return Int16.Parse(ds.Tables[0].Rows.Count.ToString());
+        }
+
+        public static bool EmailExists(string address)
+        {
+            string sql = "select count(*) c where STUMAIL_ADDRESS = '" + address + "'";
+            DataSet ds = FetchDataSet(sql);
+            if (ds.Tables.Count == 0) { return false; }
+            if (ds.Tables[0].Rows.Count == 0) { return false; }
+            return true;
+        }
+
+        public static Int16 HighestEmailCount(string address)
+        {
+            string sql = "select substr(stumail_address, -1, 1) lastn from noboto.stumail where stumail_address like '"+address+"%' and rownum < 2 order by stumail_address desc";
+            DataSet ds = FetchDataSet(sql);
+            if (ds.Tables.Count == 0) { return 0; }
+            if (ds.Tables[0].Rows.Count == 0) { return 0; }
+            DataRow r = ds.Tables[0].Rows[0];
+            return Int16.Parse(r["LASTN"].ToString());
+        }
+
         public static DataSet LoadTeachersOfClass(string classid, string term)
         {
             string sql = "select SPRIDEN.SPRIDEN_PIDM,SPRIDEN.SPRIDEN_ID,SPRIDEN.SPRIDEN_LAST_NAME,SPRIDEN.SPRIDEN_FIRST_NAME,SPRIDEN.SPRIDEN_MI from SATURN.SIRASGN SIRASGN left join SATURN.SPRIDEN SPRIDEN on SIRASGN.SIRASGN_PIDM = SPRIDEN.SPRIDEN_PIDM where SPRIDEN.SPRIDEN_CHANGE_IND is null and SIRASGN.SIRASGN_TERM_CODE ='"+term+"' and SIRASGN.SIRASGN_CRN ='"+classid+"' order by SPRIDEN.SPRIDEN_LAST_NAME,SPRIDEN.SPRIDEN_FIRST_NAME,SPRIDEN.SPRIDEN_MI,SPRIDEN.SPRIDEN_ID";

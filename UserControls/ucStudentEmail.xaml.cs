@@ -31,5 +31,17 @@ namespace Linka
         {
 
         }
+
+        public void HideStatusLabel()
+        {
+            UpdateStatusLabel("", Brushes.Black, System.Windows.Visibility.Hidden);
+        }
+
+        private void UpdateStatusLabel(string txt, Brush color, Visibility state)
+        {
+            txtStatus.Text = txt;
+            txtStatus.Foreground = color;
+            txtStatus.Visibility = state;
+        }
     }
 }
