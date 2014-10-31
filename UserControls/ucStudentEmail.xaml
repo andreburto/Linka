@@ -30,22 +30,43 @@
             <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="12" FontWeight="Bold" Grid.Column="0" Grid.Row="2">Student SSN:</TextBlock>
             <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="12" FontWeight="Bold" Grid.Column="0" Grid.Row="3">Email ID:</TextBlock>
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
-                <TextBlock x:Name="txtStuName" FontSize="12" Padding="5" />
+                <TextBlock x:Name="txtStuName" FontSize="12" Padding="5" Background="#FFF0F0FF" />
             </Border>
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">
-                <TextBlock x:Name="StuId" FontSize="12" Padding="5" />
+                <TextBlock x:Name="txtStuId" FontSize="12" Padding="5" Background="#FFF0F0FF" />
             </Border>
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2">
-                <TextBlock x:Name="txtStuSsn" FontSize="12" Padding="5" />
+                <TextBlock x:Name="txtStuSsn" FontSize="12" Padding="5" Background="#FFF0F0FF" />
             </Border>
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3">
-                <TextBox x:Name="txtEmail" FontSize="12" Padding="5" />
+                <TextBox x:Name="txtEmail" FontSize="12" Padding="5" Background="#FFF0F0FF" />
             </Border>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="Thin" Margin="15,10,5,10" Visibility="Hidden" Grid.Column="2" Grid.Row="3">Status</TextBlock>
         </Grid>
         <TextBlock x:Name="txtStatus" FontSize="12" FontWeight="Bold" Background="Silver" Padding="5" Grid.Row="2">MANAGE EMAIL ADDRESS</TextBlock>
         <Grid Grid.Column="0" Grid.Row="3" Height="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="5">
+                <TextBox x:Name="txtEmailId" FontSize="12" Padding="5" Background="#FFF0F0FF" />
+            </Border>
             
+            <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="5">
+                <TextBox x:Name="txtPassword" FontSize="12" Padding="5" Background="#FFF0F0FF" />
+            </Border>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Width="360" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button x:Name="btnCreate" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="30" Margin="5" Content="Create" FontSize="14" FontWeight="Bold" Click="btnCreate_Click" />
+                <Button x:Name="btnSuggest" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="30" Margin="5" Content="Suggest Account" FontSize="14" FontWeight="Bold" Click="btnSuggest_Click" />
+            </StackPanel>
+            <Button x:Name="btnDelete" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="30" Margin="5" Grid.Column="1" Grid.Row="1" Content="Delete Account" FontSize="14" FontWeight="Bold" Click="btnDelete_Click" />
+            <Button x:Name="btnPassword" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="30" Margin="5" Grid.Column="1" Grid.Row="2" Content="Change Password" FontSize="14" FontWeight="Bold" Click="btnPassword_Click" />
         </Grid>
     </Grid>
 </UserControl>

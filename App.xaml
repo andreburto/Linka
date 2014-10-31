@@ -11,5 +11,6 @@
         <sys:String x:Key="TERM">000000</sys:String>
         <sys:String x:Key="GID">gid</sys:String>
         <sys:String x:Key="GPW">gpw</sys:String>
+        <sys:String x:Key="GSD">google</sys:String>
     </Application.Resources>
 </Application>

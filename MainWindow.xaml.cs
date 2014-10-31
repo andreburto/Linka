@@ -23,6 +23,7 @@ namespace Linka
     public partial class MainWindow : Window
     {
         private Creds cred = new Creds();
+        private goocreds gc = new goocreds();
         public string connStr = "";
         public string term = "";
 
@@ -56,6 +57,20 @@ namespace Linka
                     App.Current.Resources["SERVER"] = cred.Server;
                     App.Current.Resources["DB"] = cred.Database;
                 }
+            }
+
+            // SET GOOGLE STUFF
+            if (gc.IsFile)
+            {
+                gc.Load();
+                App.Current.Resources["GID"] = gc.Id;
+                App.Current.Resources["GPW"] = gc.Pw;
+                App.Current.Resources["GSD"] = gc.Server;
+            }
+            else
+            {
+                frmGoogle g = new frmGoogle();
+                g.ShowDialog();
             }
 
             // SELECT A TERM

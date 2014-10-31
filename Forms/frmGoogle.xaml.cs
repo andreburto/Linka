@@ -21,6 +21,7 @@ namespace Linka
         private goocreds _gc;
         private string _id = "";
         private string _pw = "";
+        private string _domain = "";
 
         public frmGoogle()
         {
@@ -32,11 +33,13 @@ namespace Linka
                 _gc.Load();
                 txtUser.Text = _gc.Id;
                 txtPassword.Text = _gc.Pw;
+                txtDomain.Text = _gc.Server;
             }
             else
             {
                 txtUser.Text = App.Current.Resources["GID"].ToString();
                 txtPassword.Text = App.Current.Resources["GPW"].ToString();
+                txtDomain.Text = App.Current.Resources["GSD"].ToString();
             }
         }
 
@@ -44,11 +47,13 @@ namespace Linka
         {
             if (txtUser.Text.Length > 0) { _id = txtUser.Text; } else { _id = "gid"; }
             if (txtPassword.Text.Length > 0) { _pw = txtPassword.Text; } else { _pw = "gpw"; }
+            if (txtDomain.Text.Length > 0) { _domain = txtDomain.Text; } else { _domain = "google.com"; }
 
             App.Current.Resources["GID"] = _id;
             App.Current.Resources["GPW"] = _pw;
+            App.Current.Resources["GSD"] = _domain;
 
-            _gc.Save(_id, _pw);
+            _gc.Save(_id, _pw, _domain);
 
             this.DialogResult = true;
         }

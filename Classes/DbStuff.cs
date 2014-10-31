@@ -35,10 +35,25 @@ namespace Linka
             }
         }
 
-        public static DataSet LoadStudentEmail(string id)
+        public static bool InsertEmail(string stuid, string userid, string term)
+        {
+            string sql = "INSERT INTO NOBOTO.STUMAIL (STUMAIL_ID,STUMAIL_ADDRESS,STUMAIL_TERM) VALUES ('{0}','{1}','{2}')";
+            return WriteData(String.Format(sql, stuid, userid, term));
+        }
+
+        public static bool DeleteEmailByUserid(string userid)
+        {
+            string sql = "DELETE FROM NOBOTO.STUMAIL WHERE STUMAIL_ADDRESS = '{0}' AND ROWNUM < 2";
+            return WriteData(String.Format(sql, userid));
+        }
+
+        public static DataRow LoadStudentEmail(string id)
         {
             string sql = "select * from STUMAIL where STUMAIL_ID='"+id+"'";
-            return FetchDataSet(sql);
+            DataSet ds = FetchDataSet(sql);
+            if (ds.Tables.Count == 0) { return null; }
+            if (ds.Tables[0].Rows.Count == 0) { return null; }
+            return ds.Tables[0].Rows[0];
         }
 
         public static Int16 CountSimilarAddresses(string address)
@@ -163,6 +178,39 @@ namespace Linka
             else { if (ds.Tables[0].Rows.Count == 0) { return new DataSet(); } }
             // Return
             return ds;
+        }
+
+        public static bool WriteData(string queryB)
+        {
+            bool yesno = false;
+            OracleCommand cmd;
+            OracleConnection connOra = new OracleConnection();
+
+            try
+            {
+                // Reopen the connection
+                connOra.ConnectionString = MakeConn();
+                connOra.Open();
+                // Create the command
+                cmd = new OracleCommand(queryB);
+                cmd.Connection = connOra;
+                cmd.CommandType = CommandType.Text;
+                // Execute
+                cmd.ExecuteNonQuery();
+                // This far means success
+                yesno = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n\n" + ex.StackTrace + "\n\n" + ex.Source);
+            }
+            finally
+            {
+                connOra.Close();
+                connOra.Dispose();
+            }
+
+            return yesno;
         }
 
         public static string MakeConn()

@@ -69,6 +69,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\DbStuff.cs" />
+    <Compile Include="Classes\EmailStuff.cs" />
+    <Compile Include="Classes\EmailStatus.cs" />
     <Compile Include="Classes\goocreds.cs" />
     <Compile Include="Classes\Terms.cs" />
     <Compile Include="Forms\frmAbout.xaml.cs">

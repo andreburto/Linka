@@ -9,10 +9,10 @@ namespace Linka
 {
     class goocreds : Creds
     {
-        public void Save(string id, string pw)
+        public void Save(string id, string pw, string domain)
         {
             // Set values
-            this._id = id; this._pw = pw;
+            this._id = id; this._pw = pw; this._svr = domain;
             // Save file
             this.Save();
         }
@@ -21,7 +21,6 @@ namespace Linka
         {
             _file = "goocreds.txt";
             _db = "google";
-            _svr = "google";
             _fullpath = Directory.GetCurrentDirectory() + "\\" + _file;
         }
 
