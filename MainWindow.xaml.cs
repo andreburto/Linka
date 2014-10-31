@@ -88,6 +88,7 @@ namespace Linka
             ucClassesBySemester.Roster = ucRostersByClass;
             ucClassesBySemester.Teachers = ucTeachersOfClass;
             ucRostersByClass.FindStudents = ucFindAStudent;
+            ucFindAStudent.StudentEmail = ucFixStudentEmail;
         }
 
         private void mConnection_Click(object sender, RoutedEventArgs e)

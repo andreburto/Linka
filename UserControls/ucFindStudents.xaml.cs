@@ -23,11 +23,14 @@ namespace Linka
     {
         private ucStudentInfo _studentinfo;
         private ucStudentClasses _studentclasses;
+        private ucStudentEmail _studentemail;
         private bool _yesnoSI = false;
         private bool _yesnoSC = false;
+        private bool _yesnoSE = false;
 
         public ucStudentInfo StudentInfo { set { _yesnoSI = true; _studentinfo = value; } }
         public ucStudentClasses StudentClasses { set { _yesnoSC = true; _studentclasses = value; } }
+        public ucStudentEmail StudentEmail { set { _yesnoSE = true; _studentemail = value; } }
 
         public ucFindStudents()
         {
@@ -108,6 +111,12 @@ namespace Linka
             if (_yesnoSI == true)
             {
                 _studentinfo.UpdateForm(dr);
+            }
+
+            // Update the external ucFixStudentEmail tab...
+            if (_yesnoSE == true)
+            {
+                _studentemail.UpdateForm(dr);
             }
         }
 

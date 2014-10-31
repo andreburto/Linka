@@ -27,7 +27,7 @@ namespace Linka
             InitializeComponent();
         }
 
-        public void UpdateForm(string id)
+        public void UpdateForm(DataRow dr)
         {
 
         }
