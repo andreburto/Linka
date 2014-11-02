@@ -22,7 +22,6 @@ namespace Linka
     /// </summary>
     public partial class ucStudentEmail : UserControl
     {
-        public EmailStuff _em;
         protected string _fn;
         protected string _ln;
 
@@ -31,7 +30,7 @@ namespace Linka
             InitializeComponent();
 
             // Initialize email object
-            _em = new EmailStuff(App.Current.Resources["GID"].ToString(),
+            EmailStuff _em = new EmailStuff(App.Current.Resources["GID"].ToString(),
                                  App.Current.Resources["GPW"].ToString(),
                                  App.Current.Resources["GSD"].ToString());
         }

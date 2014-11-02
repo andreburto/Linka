@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-using GoogleStudentsLib;
 using Linka;
+using GoogleStudentsLib;
 
 namespace Linka
 {
-    class EmailStuff
+    public class EmailStuff
     {
-        private Google _goog;
+        protected Google _goog;
 
         public bool CheckForEmailInDatabase(string stuid)
         {
