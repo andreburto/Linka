@@ -49,7 +49,7 @@ namespace Linka
 
         public static DataRow LoadStudentEmail(string id)
         {
-            string sql = "select * from STUMAIL where STUMAIL_ID='"+id+"'";
+            string sql = "select * from noboto.STUMAIL where STUMAIL_ID='"+id+"'";
             DataSet ds = FetchDataSet(sql);
             if (ds.Tables.Count == 0) { return null; }
             if (ds.Tables[0].Rows.Count == 0) { return null; }
@@ -58,7 +58,7 @@ namespace Linka
 
         public static Int16 CountSimilarAddresses(string address)
         {
-            string sql = "select count(*) c where STUMAIL_ADDRESS like '"+address+"%'";
+            string sql = "select count(*) c FROM noboto.stumail where STUMAIL_ADDRESS like '"+address+"%'";
             DataSet ds = FetchDataSet(sql);
             if (ds.Tables.Count == 0) { return 0; }
             if (ds.Tables[0].Rows.Count == 0) { return 0; }
@@ -67,7 +67,7 @@ namespace Linka
 
         public static bool EmailExists(string address)
         {
-            string sql = "select count(*) c where STUMAIL_ADDRESS = '" + address + "'";
+            string sql = "select count(*) c from noboto.stumail where STUMAIL_ADDRESS = '" + address + "'";
             DataSet ds = FetchDataSet(sql);
             if (ds.Tables.Count == 0) { return false; }
             if (ds.Tables[0].Rows.Count == 0) { return false; }

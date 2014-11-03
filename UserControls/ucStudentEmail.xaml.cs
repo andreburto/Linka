@@ -22,21 +22,22 @@ namespace Linka
     /// </summary>
     public partial class ucStudentEmail : UserControl
     {
+        protected EmailStuff _em;
         protected string _fn;
         protected string _ln;
+        protected string _id;
 
         public ucStudentEmail()
         {
             InitializeComponent();
-
-            // Initialize email object
-            EmailStuff _em = new EmailStuff(App.Current.Resources["GID"].ToString(),
-                                 App.Current.Resources["GPW"].ToString(),
-                                 App.Current.Resources["GSD"].ToString());
         }
 
         public void UpdateForm(DataRow dr)
         {
+            _em = new EmailStuff(App.Current.Resources["GID"].ToString(),
+                                 App.Current.Resources["GPW"].ToString(),
+                                 App.Current.Resources["GSD"].ToString());
+
             // Set general related info
             txtStuSsn.Text = dr["SPBPERS_SSN"].ToString();
             txtStuId.Text = dr["SPRIDEN_ID"].ToString();
@@ -45,9 +46,31 @@ namespace Linka
             // Set local variables
             _ln = dr["SPRIDEN_LAST_NAME"].ToString();
             _fn = dr["SPRIDEN_FIRST_NAME"].ToString();
+            _id = dr["SPRIDEN_ID"].ToString();
 
             // Check for email
-            
+            EmailStatus status = _em.FullCheck(_id);
+            MessageBox.Show(App.Current.Resources["GID"].ToString() + "\r\n" +
+                                 App.Current.Resources["GPW"].ToString() + "\r\n" +
+                                 App.Current.Resources["GSD"].ToString());
+            MessageBox.Show("1. "+status.status().ToString()+"\r\n2. "+status.userid+"\r\n3. "+_em.ToString());
+            // Report Status
+            switch (status.status())
+            {
+                case 1:
+                    UpdateStatusLabel("Only in database.", Brushes.Red, Visibility.Visible);
+                    break;
+                case 2:
+                    UpdateStatusLabel("Only in Google.", Brushes.Red, Visibility.Visible);
+                    break;
+                case 3:
+                    UpdateStatusLabel("Exists.", Brushes.Green, Visibility.Visible);
+                    break;
+                default:
+                    UpdateStatusLabel("No such email", Brushes.Red, Visibility.Visible);
+                    txtEmail.Text = status.userid;
+                    break;
+            }
         }
 
         public void HideStatusLabel()
