@@ -13,7 +13,7 @@
             <RowDefinition Height="200"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Name="txtTopLabel" FontSize="12" FontWeight="Bold" Background="Silver" Padding="5" Grid.Row="0">STUDENT EMAIL INFORMATION</TextBlock>
-        <Grid Grid.Column="0" Grid.Row="1" Height="200">
+        <Grid Grid.Column="0" Grid.Row="1" Height="200" Background="#FFF0F0F0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -39,12 +39,12 @@
                 <TextBox x:Name="txtStuSsn" FontSize="12" Padding="5" Background="#FFF0F0FF" />
             </Border>
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3">
-                <TextBox x:Name="txtEmail" FontSize="12" Padding="5" Background="#FFF0F0FF" />
+                <TextBox x:Name="txtEmail" FontSize="12" Padding="5" Background="#FFF0F0FF" TextChanged="txtEmail_TextChanged" />
             </Border>
             <TextBlock x:Name="txtStatus" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontWeight="Thin" Margin="15,10,5,10" Visibility="Hidden" Grid.Column="2" Grid.Row="3">Status</TextBlock>
         </Grid>
         <TextBlock FontSize="12" FontWeight="Bold" Background="Silver" Padding="5" Grid.Row="2">MANAGE EMAIL ADDRESS</TextBlock>
-        <Grid Grid.Column="0" Grid.Row="3" Height="200">
+        <Grid Grid.Column="0" Grid.Row="3" Height="200" Background="#FFF0F0F0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -55,11 +55,11 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="5">
-                <TextBox x:Name="txtEmailId" FontSize="12" Padding="5" Background="#FFF0F0FF" />
+                <TextBox x:Name="txtEmailId" FontSize="12" Padding="5" Background="#FFF0F0FF" TextChanged="txtEmailId_TextChanged" />
             </Border>
             
             <Border BorderBrush="Navy" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Margin="5">
-                <TextBox x:Name="txtPassword" FontSize="12" Padding="5" Background="#FFF0F0FF" />
+                <TextBox x:Name="txtPassword" FontSize="12" Padding="5" Background="#FFF0F0FF" TextChanged="txtPassword_TextChanged" />
             </Border>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0" Width="360" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Button x:Name="btnCreate" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="30" Margin="5" Content="Create" FontSize="14" FontWeight="Bold" Click="btnCreate_Click" />

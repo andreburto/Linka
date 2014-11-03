@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="dockPanel1">
-        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="dataGrid1" />
+        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="dataGrid1" SelectionMode="Single" />
     </DockPanel>
 </UserControl>

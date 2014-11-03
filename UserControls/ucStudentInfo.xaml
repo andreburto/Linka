@@ -24,7 +24,7 @@
         </StackPanel>
         <TextBlock FontSize="12" FontWeight="Bold" Background="Silver" Grid.Column="0" Grid.Row="1">Student Addresses:</TextBlock>
         <DockPanel Grid.Row="2" Grid.Column="0" Height="200" VerticalAlignment="Top">
-            <DataGrid AutoGenerateColumns="True" Name="dataGrid1" Margin="0" />
+            <DataGrid AutoGenerateColumns="True" Name="dataGrid1" Margin="0" SelectionMode="Single" />
         </DockPanel>
     </Grid>
 </UserControl>

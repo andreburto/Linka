@@ -28,6 +28,7 @@ namespace Linka
             txtTerm.Text = App.Current.Resources["TERM"].ToString();
 
             ds = DbStuff.LoadTerms();
+            if (ds.Tables.Count == 0) { return; }
             cmbTerms.ItemsSource = ds.Tables[0].DefaultView;
             cmbTerms.DisplayMemberPath = ds.Tables[0].Columns["ROVTERM_DESC"].ToString();
             cmbTerms.SelectedValuePath = ds.Tables[0].Columns["ROVTERM_CODE"].ToString();

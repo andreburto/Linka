@@ -62,7 +62,9 @@ namespace Linka
             DataSet ds = FetchDataSet(sql);
             if (ds.Tables.Count == 0) { return 0; }
             if (ds.Tables[0].Rows.Count == 0) { return 0; }
-            return Int16.Parse(ds.Tables[0].Rows.Count.ToString());
+            DataRow dr = ds.Tables[0].Rows[0];
+            Int16 c = Int16.Parse(dr["c"].ToString());
+            return c;
         }
 
         public static bool EmailExists(string address)
@@ -76,6 +78,8 @@ namespace Linka
 
         public static Int16 HighestEmailCount(string address)
         {
+            if (DbStuff.CountSimilarAddresses(address) == 0) { return 0; }
+            if (DbStuff.CountSimilarAddresses(address) == 1) { return 1; }
             string sql = "select substr(stumail_address, -1, 1) lastn from noboto.stumail where stumail_address like '"+address+"%' and rownum < 2 order by stumail_address desc";
             DataSet ds = FetchDataSet(sql);
             if (ds.Tables.Count == 0) { return 0; }

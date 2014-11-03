@@ -62,12 +62,17 @@ namespace Linka
             try
             {
                 if (c == 5) { throw new Exception("Too many checks with Google."); }
-                int number = DbStuff.HighestEmailCount(fn + '.' + ln) + 1;
-                string id = fn + '.' + ln + number.ToString();
+                string id = fn.ToLower() + '.' + ln.ToLower();
+                int number = DbStuff.HighestEmailCount(id);
+                if (number > 0)
+                {
+                    number += c;
+                    id += number.ToString();
+                }
                 if (CheckForEmailInGoogle(id))
                 {
                     Thread.Sleep(1000);
-                    return SuggestId(fn, ln, c++);
+                    return SuggestId(fn, ln, c+1);
                 }
                 return id;
             }
@@ -84,17 +89,19 @@ namespace Linka
 
         public bool DeleteEmail(string id)
         {
-            return true;
+            return _goog.DeleteUser(id);
         }
 
-        public bool ChangePassword(string id, string pw)
+        public bool ChangePassword(string id, string fn, string ln, string pw)
         {
-            return true;
+            User u = _goog.UpdateUser(id, fn, ln, pw);
+            return u.exists;
         }
 
-        public bool CreateEmail(string id, string pw)
+        public bool CreateEmail(string id, string fn, string ln, string pw)
         {
-            return true;
+            User u = _goog.CreateUser(id, fn, ln, pw);
+            return u.exists;
         }
 
         public override string ToString()

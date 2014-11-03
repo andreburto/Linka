@@ -34,6 +34,16 @@ namespace Linka
 
         public void UpdateForm(DataRow dr)
         {
+            // Clean managemnt fields
+            txtEmailId.Text = "";
+            txtPassword.Text = "";
+
+            // Set buttons
+            btnCreate.IsEnabled = false;
+            btnDelete.IsEnabled = false;
+            btnPassword.IsEnabled = false;
+
+            // Initialize object for each new user
             _em = new EmailStuff(App.Current.Resources["GID"].ToString(),
                                  App.Current.Resources["GPW"].ToString(),
                                  App.Current.Resources["GSD"].ToString());
@@ -50,10 +60,7 @@ namespace Linka
 
             // Check for email
             EmailStatus status = _em.FullCheck(_id);
-            MessageBox.Show(App.Current.Resources["GID"].ToString() + "\r\n" +
-                                 App.Current.Resources["GPW"].ToString() + "\r\n" +
-                                 App.Current.Resources["GSD"].ToString());
-            MessageBox.Show("1. "+status.status().ToString()+"\r\n2. "+status.userid+"\r\n3. "+_em.ToString());
+
             // Report Status
             switch (status.status())
             {
@@ -65,10 +72,10 @@ namespace Linka
                     break;
                 case 3:
                     UpdateStatusLabel("Exists.", Brushes.Green, Visibility.Visible);
+                    txtEmail.Text = status.userid;
                     break;
                 default:
                     UpdateStatusLabel("No such email", Brushes.Red, Visibility.Visible);
-                    txtEmail.Text = status.userid;
                     break;
             }
         }
@@ -87,22 +94,110 @@ namespace Linka
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (txtEmail.Text.Length > 0) { throw new Exception("ID for user exists."); }
+                if (txtEmailId.Text.Length == 0) { throw new Exception("You must input an ID."); }
+                if (txtPassword.Text.Length == 0) { throw new Exception("You must input a password."); }
+                if (_em.CreateEmail(txtEmailId.Text, _fn, _ln, txtPassword.Text))
+                {
+                    if (DbStuff.InsertEmail(txtStuId.Text, txtEmailId.Text, App.Current.Resources["TERM"].ToString()))
+                    {
+                        txtEmail.Text = txtEmailId.Text;
+                        txtEmailId.Text = "";
+                        txtPassword.Text = "";
+                        UpdateStatusLabel("Created!", Brushes.Green, Visibility.Visible);
+                    }
+                    else
+                    {
+                        _em.DeleteEmail(txtEmailId.Text);
+                        UpdateStatusLabel("Database error!", Brushes.Red, Visibility.Visible);
+                        throw new Exception("Could not add to database.");
+                    }
+                }
+                else
+                {
+                    UpdateStatusLabel("Error Creating!", Brushes.Red, Visibility.Visible);
+                    throw new Exception("Could not create email.");
+                }
+            }
+            catch(Exception ex)
+            {
+                DbStuff.ErrMsg(ex.Message);
+            }
         }
 
         private void btnSuggest_Click(object sender, RoutedEventArgs e)
         {
-
+            txtEmailId.Text = _em.SuggestId(_fn, _ln);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (_em.DeleteEmail(txtEmail.Text))
+                {
+                    if (DbStuff.DeleteEmailByUserid(txtEmail.Text))
+                    {
+                        UpdateStatusLabel("No address", Brushes.Red, Visibility.Visible);
+                    }
+                    else
+                    {
+                        throw new Exception("Could not complete; still in databaase.");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Could not remove from Google.");
+                }
+            }
+            catch (Exception ex)
+            {
+                DbStuff.ErrMsg(ex.Message);
+            }
         }
 
         private void btnPassword_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (txtPassword.Text.Length == 0) { throw new Exception("You must input a password."); }
+                if (_em.ChangePassword(txtEmail.Text, _fn, _ln, txtPassword.Text) == false)
+                {
+                    DbStuff.ErrMsg("Password update failed.");
+                }
+                else
+                {
+                    MessageBox.Show("Password changed!");
+                    txtPassword.Text = "";
+                }
+            }
+            catch(Exception ex)
+            {
+                DbStuff.ErrMsg(ex.Message);
+            }
+        }
 
+        // You can only create an account if there's txt in txtEmailId
+        private void txtEmailId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtEmailId.Text.Length > 0) { btnCreate.IsEnabled = true; }
+            else { btnCreate.IsEnabled = false; }
+        }
+
+        // You can only delete an account that exists
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtEmail.Text.Length > 0) { btnDelete.IsEnabled = true; }
+            else { btnDelete.IsEnabled = false; }
+        }
+
+        // You can only update a password with a password
+        private void txtPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtPassword.Text.Length > 0) { btnPassword.IsEnabled = true; }
+            else { btnPassword.IsEnabled = false; }
         }
     }
 }

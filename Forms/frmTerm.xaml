@@ -11,7 +11,7 @@
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ComboBox HorizontalAlignment="Stretch" Margin="5" Name="cmbTerms" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" SelectionChanged="cmbTerms_SelectionChanged" />
+        <ComboBox HorizontalAlignment="Stretch" Margin="5" Name="cmbTerms" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" SelectionChanged="cmbTerms_SelectionChanged" Text="Choose a term..." />
         <TextBox Name="txtTerm" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5" Grid.Column="1" DataContext="{Binding Source={StaticResource TERM}}" />
         <Button Content="SELECT" Height="23" HorizontalAlignment="Stretch" Margin="5" Name="btnTerm" VerticalAlignment="Center" Grid.Column="2" Click="btnTerm_Click" />
     </Grid>
