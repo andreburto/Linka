@@ -106,6 +106,12 @@ namespace Linka
             return FetchDataSet(sql);
         }
 
+        public static DataSet LoadStudentByOldId(string oldid)
+        {
+            string sql = "select spriden.*, spbpers.* from (saturn.spriden spriden1 join saturn.spriden spriden on spriden1.spriden_pidm = spriden.spriden_pidm) join saturn.spbpers on spriden.spriden_pidm = spbpers.spbpers_pidm where spriden.spriden_change_ind is null and spriden1.spriden_id = '" + oldid + "'";
+            return FetchDataSet(sql);
+        }
+
         public static DataSet LoadStudentInfoBySsn(string ssn)
         {
             string sql = "select spbpers.*, SPRIDEN.* from spbpers join spriden on spbpers.spbpers_pidm = spriden.spriden_pidm where spriden_change_ind is null and spbpers_ssn='"+ssn+"'";

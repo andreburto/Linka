@@ -27,11 +27,20 @@ namespace Linka
 
             txtTerm.Text = App.Current.Resources["TERM"].ToString();
 
-            ds = DbStuff.LoadTerms();
-            if (ds.Tables.Count == 0) { return; }
-            cmbTerms.ItemsSource = ds.Tables[0].DefaultView;
-            cmbTerms.DisplayMemberPath = ds.Tables[0].Columns["ROVTERM_DESC"].ToString();
-            cmbTerms.SelectedValuePath = ds.Tables[0].Columns["ROVTERM_CODE"].ToString();
+            try
+            {
+                ds = DbStuff.LoadTerms();
+                if (ds.Tables.Count == 0) { throw new Exception("No terms found."); }
+                if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No terms found."); }
+                cmbTerms.ItemsSource = ds.Tables[0].DefaultView;
+                cmbTerms.DisplayMemberPath = ds.Tables[0].Columns["ROVTERM_DESC"].ToString();
+                cmbTerms.SelectedValuePath = ds.Tables[0].Columns["ROVTERM_CODE"].ToString();
+            }
+            catch (Exception ex)
+            {
+                DbStuff.ErrMsg(ex.Message);
+                cmbTerms.IsEnabled = false;
+            }
         }
 
         private void btnTerm_Click(object sender, RoutedEventArgs e)

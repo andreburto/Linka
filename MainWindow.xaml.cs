@@ -44,12 +44,7 @@ namespace Linka
             {
                 Login l = new Login();
                 l.ShowDialog();
-                if (l.DialogResult == false)
-                {
-                    this.Close();
-                    return;
-                }
-                else
+                if (l.DialogResult == true)
                 {
                     cred.Load();
                     App.Current.Resources["ID"] = cred.Id;
@@ -82,12 +77,7 @@ namespace Linka
             {
                 frmTerm t = new frmTerm();
                 t.ShowDialog();
-                if (t.DialogResult == false)
-                {
-                    this.Close();
-                    return;
-                }
-                else
+                if (t.DialogResult == true)
                 {
                     App.Current.Resources["TERM"] = Terms.Read();
                 }
@@ -96,14 +86,14 @@ namespace Linka
             // Set the local term variable
             term = App.Current.Resources["TERM"].ToString();
 
-            // LOAD the main class
-            ucClassesBySemester.UpdateTable(term);
-
             // Set UserControl dependency chain
             ucClassesBySemester.Roster = ucRostersByClass;
             ucClassesBySemester.Teachers = ucTeachersOfClass;
             ucRostersByClass.FindStudents = ucFindAStudent;
             ucFindAStudent.StudentEmail = ucFixStudentEmail;
+
+            // LOAD the main class
+            if (term.Length > 0) { ucClassesBySemester.UpdateTable(term); }
         }
 
         private void mConnection_Click(object sender, RoutedEventArgs e)

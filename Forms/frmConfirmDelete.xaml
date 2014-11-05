@@ -1,0 +1,16 @@
+﻿<Window x:Class="Linka.frmConfirmDelete"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Confirm Account Deletion" Height="150" Width="300" ResizeMode="NoResize" Icon="/Linka;component/Images/linka.ico" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="txtConfirm" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Grid.Column="0" Grid.Row="0" FontSize="14" TextWrapping="WrapWithOverflow">Statement goes here.</TextBlock>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnYes" Margin="10" Width="100" Height="30" FontSize="14" Click="btnYes_Click">YES</Button>
+            <Button x:Name="btnNo" Margin="10" Width="100" Height="30" FontSize="14" Click="btnNo_Click">NO</Button>
+        </StackPanel>
+    </Grid>
+</Window>

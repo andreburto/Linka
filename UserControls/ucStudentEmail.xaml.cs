@@ -37,6 +37,7 @@ namespace Linka
             // Clean managemnt fields
             txtEmailId.Text = "";
             txtPassword.Text = "";
+            txtEmail.Text = "";
 
             // Set buttons
             btnCreate.IsEnabled = false;
@@ -134,22 +135,28 @@ namespace Linka
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            frmConfirmDelete cd = new frmConfirmDelete(txtEmail.Text);
+
             try
             {
-                if (_em.DeleteEmail(txtEmail.Text))
+                cd.ShowDialog();
+                if (cd.DialogResult == true)
                 {
-                    if (DbStuff.DeleteEmailByUserid(txtEmail.Text))
+                    if (_em.DeleteEmail(txtEmail.Text))
                     {
-                        UpdateStatusLabel("No address", Brushes.Red, Visibility.Visible);
+                        if (DbStuff.DeleteEmailByUserid(txtEmail.Text))
+                        {
+                            UpdateStatusLabel("No address", Brushes.Red, Visibility.Visible);
+                        }
+                        else
+                        {
+                            throw new Exception("Could not complete; still in databaase.");
+                        }
                     }
                     else
                     {
-                        throw new Exception("Could not complete; still in databaase.");
+                        throw new Exception("Could not remove from Google.");
                     }
-                }
-                else
-                {
-                    throw new Exception("Could not remove from Google.");
                 }
             }
             catch (Exception ex)

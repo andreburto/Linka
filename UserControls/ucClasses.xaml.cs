@@ -32,11 +32,16 @@ namespace Linka
         public void UpdateTable(string term)
         {
             dataGrid1.ItemsSource = null;
-            DataSet ds = DbStuff.LoadClassesBySemester(term);
-
-            if (ds.Tables.Count > 0)
+            try
             {
+                DataSet ds = DbStuff.LoadClassesBySemester(term);
+                if (ds.Tables.Count == 0) { throw new Exception("No classes found."); }
+                if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No classes found."); }
                 dataGrid1.ItemsSource = ds.Tables[0].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                DbStuff.ErrMsg(ex.Message);
             }
         }
 

@@ -59,6 +59,12 @@ namespace Linka
             else { btnPidm.IsEnabled = true; }
         }
 
+        private void txtOldId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtOldId.Text.Length == 0) { btnOldId.IsEnabled = false; }
+            else { btnOldId.IsEnabled = true; }
+        }
+
         private void btnSsn_Click(object sender, RoutedEventArgs e)
         {
             string ssn = txtSsn.Text.Replace("-", "").Replace(" ", "");
@@ -69,6 +75,7 @@ namespace Linka
                 return;
             }
             CheckResults(DbStuff.LoadStudentInfoBySsn(ssn));
+            txtSsn.Text = "";
         }
 
         private void btnId_Click(object sender, RoutedEventArgs e)
@@ -79,12 +86,21 @@ namespace Linka
                 DbStuff.ErrMsg("You are not sending a Banner ID. Results by vary.");
             }
             CheckResults(DbStuff.LoadStudentInfoById(id));
+            txtId.Text = "";
         }
 
         private void btnPidm_Click(object sender, RoutedEventArgs e)
         {
             string pidm = txtSsn.Text.Replace(" ", "");
             CheckResults(DbStuff.LoadStudentInfoByPidm(pidm));
+            txtPidm.Text = "";
+        }
+
+        private void btnOldId_Click(object sender, RoutedEventArgs e)
+        {
+            string oldid = txtOldId.Text.Replace(" ", "");
+            CheckResults(DbStuff.LoadStudentByOldId(oldid));
+            txtOldId.Text = "";
         }
 
         private void ResetForm()
@@ -123,9 +139,16 @@ namespace Linka
         // Trying to filter DataSets through one function
         private void CheckResults(DataSet ds)
         {
-            if (ds.Tables.Count == 0) { throw new Exception("No tables found."); }
-            if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No records found."); }
-            UpdateControls(ds.Tables[0].Rows[0]);
+            try
+            {
+                if (ds.Tables.Count == 0) { throw new Exception("No tables found."); }
+                if (ds.Tables[0].Rows.Count == 0) { throw new Exception("No records found."); }
+                UpdateControls(ds.Tables[0].Rows[0]);
+            }
+            catch (Exception ex)
+            {
+                DbStuff.ErrMsg(ex.Message);
+            }
         }
 
         /* Publically accessible functions that update the embedded user controls via the above private function */
