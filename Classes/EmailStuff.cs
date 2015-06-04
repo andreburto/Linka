@@ -11,7 +11,7 @@ namespace Linka
 {
     public class EmailStuff
     {
-        protected Google _goog;
+        protected GoogleStudentsLib.Google _goog;
 
         public bool CheckForEmailInDatabase(string stuid)
         {
@@ -111,7 +111,7 @@ namespace Linka
 
         public EmailStuff(string gid, string gpw, string domain)
         {
-            _goog = new Google();
+            _goog = new GoogleStudentsLib.Google();
             _goog.authkey = _goog.GetAuth(gid, gpw);
             _goog.domain = domain;
         }
