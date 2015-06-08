@@ -4,14 +4,22 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Admin.Directory.directory_v1;
+using Google.Apis.Admin.Directory.directory_v1.Data;
+using Google.Apis.Services;
+using Google.Apis.Util;
+using Google.Apis.Util.Store;
+
 using Linka;
-using GoogleStudentsLib;
 
 namespace Linka
 {
     public class EmailStuff
     {
-        protected GoogleStudentsLib.Google _goog;
+        protected UserCredential credential;
 
         public bool CheckForEmailInDatabase(string stuid)
         {
@@ -24,7 +32,7 @@ namespace Linka
         public bool CheckForEmailInGoogle(string userid)
         {
             // Checks google
-            return _goog.CheckUserExists(userid);
+            return false;
         }
 
         public bool ConfirmOwner(string stuid, string userid)
@@ -89,31 +97,22 @@ namespace Linka
 
         public bool DeleteEmail(string id)
         {
-            return _goog.DeleteUser(id);
+            return false;
         }
 
         public bool ChangePassword(string id, string fn, string ln, string pw)
         {
-            User u = _goog.UpdateUser(id, fn, ln, pw);
-            return u.exists;
+            return false;
         }
 
         public bool CreateEmail(string id, string fn, string ln, string pw)
         {
-            User u = _goog.CreateUser(id, fn, ln, pw);
-            return u.exists;
-        }
-
-        public override string ToString()
-        {
-            return String.Format("AUTHKEY: {0}, DOMAIN: {1}", _goog.authkey, _goog.domain);
+            return false;
         }
 
         public EmailStuff(string gid, string gpw, string domain)
         {
-            _goog = new GoogleStudentsLib.Google();
-            _goog.authkey = _goog.GetAuth(gid, gpw);
-            _goog.domain = domain;
+
         }
     }
 }

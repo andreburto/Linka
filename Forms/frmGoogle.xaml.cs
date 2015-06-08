@@ -32,13 +32,13 @@ namespace Linka
             {
                 _gc.Load();
                 txtUser.Text = _gc.Id;
-                txtPassword.Text = _gc.Pw;
+                txtSecretFile.Text = _gc.Pw;
                 txtDomain.Text = _gc.Server;
             }
             else
             {
                 txtUser.Text = App.Current.Resources["GID"].ToString();
-                txtPassword.Text = App.Current.Resources["GPW"].ToString();
+                txtSecretFile.Text = App.Current.Resources["GSF"].ToString();
                 txtDomain.Text = App.Current.Resources["GSD"].ToString();
             }
         }
@@ -46,11 +46,11 @@ namespace Linka
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (txtUser.Text.Length > 0) { _id = txtUser.Text; } else { _id = "gid"; }
-            if (txtPassword.Text.Length > 0) { _pw = txtPassword.Text; } else { _pw = "gpw"; }
+            if (txtSecretFile.Text.Length > 0) { _pw = txtSecretFile.Text; } else { _pw = "GSF"; }
             if (txtDomain.Text.Length > 0) { _domain = txtDomain.Text; } else { _domain = "google.com"; }
 
             App.Current.Resources["GID"] = _id;
-            App.Current.Resources["GPW"] = _pw;
+            App.Current.Resources["GSF"] = _pw;
             App.Current.Resources["GSD"] = _domain;
 
             _gc.Save(_id, _pw, _domain);

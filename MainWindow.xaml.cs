@@ -59,7 +59,7 @@ namespace Linka
             {
                 gc.Load();
                 App.Current.Resources["GID"] = gc.Id;
-                App.Current.Resources["GPW"] = gc.Pw;
+                App.Current.Resources["GSF"] = gc.Pw;
                 App.Current.Resources["GSD"] = gc.Server;
             }
             else

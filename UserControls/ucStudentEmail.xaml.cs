@@ -46,7 +46,7 @@ namespace Linka
 
             // Initialize object for each new user
             _em = new EmailStuff(App.Current.Resources["GID"].ToString(),
-                                 App.Current.Resources["GPW"].ToString(),
+                                 App.Current.Resources["GSF"].ToString(),
                                  App.Current.Resources["GSD"].ToString());
 
             // Set general related info
