@@ -98,8 +98,16 @@ namespace Linka
 
         public bool DeleteEmail(string userid)
         {
-            if (userid.Contains('@') == false) { userid += "@" + StudentDomain; }
-            return false;
+            try
+            {
+                if (userid.Contains('@') == false) { userid += "@" + StudentDomain; }
+                service.Users.Delete(userid).Execute();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool ChangePassword(string userid, string pw)
@@ -107,7 +115,7 @@ namespace Linka
             try
             {
                 if (userid.Contains('@') == false) { userid += "@" + StudentDomain; }
-                User student = new User(); // service.Users.Get(userid).Execute();
+                User student = new User();
                 student.Password = pw;
                 service.Users.Update(student, userid).Execute();
                 return true;
@@ -120,8 +128,25 @@ namespace Linka
 
         public bool CreateEmail(string userid, string fn, string ln, string pw)
         {
-            if (userid.Contains('@') == false) { userid += "@" + StudentDomain; }
-            return false;
+            try
+            {
+                if (CheckForEmailInGoogle(userid) == true) { throw new Exception("Email exists."); }
+                if (userid.Contains('@') == false) { userid += "@" + StudentDomain; }
+                User student = new User();
+                UserName stuname = new UserName();
+                stuname.GivenName = fn;
+                stuname.FamilyName = ln;
+                student.Name = stuname;
+                student.PrimaryEmail = userid;
+                student.Password = pw;
+                service.Users.Insert(student).Execute();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message+"\r\n\r\n"+ex.StackTrace);
+                return false;
+            }
         }
 
         public EmailStuff(string gid, string gsf, string domain)
