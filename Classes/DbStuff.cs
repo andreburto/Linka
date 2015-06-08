@@ -150,7 +150,7 @@ namespace Linka
 
         public static DataSet LoadTerms()
         {
-            string sql = "select ROVTERM_CODE, ROVTERM_DESC from rovterm where rovterm_start_date > TO_DATE('01-MAY-2013', 'DD-MON-YYYY') and rovterm_start_date < TO_DATE('01-JAN-2999', 'DD-MON-YYYY') order by rovterm_start_date desc";
+            string sql = "select ROVTERM.ROVTERM_DESC, ROVTERM.ROVTERM_CODE from BANINST1.ROVTERM ROVTERM where ROVTERM.ROVTERM_CODE <= noboto.this_term() and ROVTERM.ROVTERM_CODE > 000000 order by ROVTERM.ROVTERM_CODE desc";
             return FetchDataSet(sql);
         }
 

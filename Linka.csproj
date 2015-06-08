@@ -162,6 +162,7 @@
     <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="UserControls\ucClasses.xaml.cs">
       <DependentUpon>ucClasses.xaml</DependentUpon>
     </Compile>

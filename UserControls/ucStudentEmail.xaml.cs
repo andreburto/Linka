@@ -150,7 +150,7 @@ namespace Linka
                         }
                         else
                         {
-                            throw new Exception("Could not complete; still in databaase.");
+                            throw new Exception("Could not complete; still in database.");
                         }
                     }
                     else
@@ -170,7 +170,7 @@ namespace Linka
             try
             {
                 if (txtPassword.Text.Length == 0) { throw new Exception("You must input a password."); }
-                if (_em.ChangePassword(txtEmail.Text, _fn, _ln, txtPassword.Text) == false)
+                if (_em.ChangePassword(txtEmail.Text, txtPassword.Text) == false)
                 {
                     DbStuff.ErrMsg("Password update failed.");
                 }
